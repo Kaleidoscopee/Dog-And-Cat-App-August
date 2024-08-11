@@ -22,7 +22,11 @@ return data.json();
 console.log(post.title);
 }); */
 
-fetch('https://api.open-meteo.com/v1/forecast?latitude=40.758896&longitude=-73.98513&hourly=temperature_2m&temperature_unit=fahrenheit')
+//WORKING
+fetch('')
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.log("There has been an error: " + error));
+
+
+
