@@ -8,10 +8,17 @@ function App() {
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.log("There has been an error: " + error));
+  const [count, setCount] = useState(0)
+
+  //WORKING API structure
+fetch('')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log("There has been an error: " + error));
 
   return (
     <>
-       <h1>The Dog and Cat App</h1>
+        <h1>The Dog and Cat App</h1>
     <nav>
         <ul>
             <li>Home</li>
@@ -24,6 +31,7 @@ function App() {
     <footer>
         <h6>copyright blah blah blah 2024</h6>
     </footer>
+      
     </>
   )
 }
