@@ -42,17 +42,57 @@ Okay just read the documentation and messed with the settings a bit.
 
 Okay so everything works, but the elevation still comes up as 91 despite putting &elevation=nan in the link. Maybe it's a settings option. I'll have to check again.  
 
-8/10/24 - 8:07
+8/10/24 - 8:07pm
 Okay so luckily my fetch works, but the API is returning the temperature at an elevation of 91 meters no matter what I do, and i don't think knowing it's 168 degrees Farenheight above Times Square is very helpful. Going to have to pivot, luckily that mainly just mweans the HTML content, the rest of the code should be reusable. 
 
-8/10/24 - 8:42
+8/10/24 - 8:42pm
 Took a food break, so I'll have to use another API and shift focus of the project. It's been a bit since I've used vite, but should just be an install and then a matter of keeping the API key within the env file under a variable, then putting that variable within the code. 
 
-8/10/24 - 10:08 
+8/10/24 - 10:08pm
 Okay so Vite requires Node.js and I'll go ahead and download since this is a new hardrive. 
 
-8/10/24 - 10:28 
+8/10/24 - 10:28pm
 Okay Vite is installed, but now I messed up since it's within the Weather App directory as if it's a seperate folder within the app. Now I have to find out how to move it up the hierarchy and the main focus, while copying over the relevant code. Also making it part of the repository I suppose. Also need to figure out how to make it ignore certain files when updating the commit as I remember certain files like package-lock.json take forever to send to github. Going to commit now, and then look it up alongside fixing the app hierarchy. 
 
-8/10/24 - 11:52
+8/10/24 - 11:52pm
 Okay back froma  shower and some coffee, lets fix this app in the directory and put the code in the relevant files.
+
+8/11/24 - 12:13am
+Moved all original code int o Vite's fiel structure. Once deleted it looks like it goes directly into the Vite folder, so I'll leave it for now to save time. 
+
+8/11/24 - 1:12am 
+Found it, the .env file (https://vitejs.dev/guide/env-and-mode.html) is where you put the API keys to recall later through the variable. 
+
+8/11/24 - 1:30am
+So it seems I have everything from what I remember putting the API Key in the env file so no one can see it, and just calling it from the request link in Fetch, but the console is giving me 
+
+Had to also delete Vite and React logo from jsx. Maybe that'll fix it??
+
+Okay so it looks like multiple errors pop up 
+-"react-dom_client.js?v=bb34a7b9:19411 Uncaught 
+ReferenceError: dogApiKey is not defined
+    at App (App.jsx:9:85)
+    at renderWithHooks (react-dom_client.js?v=bb34a7b9:11546:26)
+    at mountIndeterminateComponent (react-dom_client.js?v=bb34a7b9:14924:21)
+    at beginWork (react-dom_client.js?v=bb34a7b9:15912:22)
+    at beginWork$1 (react-dom_client.js?v=bb34a7b9:19751:22)
+    at performUnitOfWork (react-dom_client.js?v=bb34a7b9:19196:20)
+    at workLoopSync (react-dom_client.js?v=bb34a7b9:19135:13)
+    at renderRootSync (react-dom_client.js?v=bb34a7b9:19114:15)
+    at recoverFromConcurrentError (react-dom_client.js?v=bb34a7b9:18734:28)
+    at performConcurrentWorkOnRoot (react-dom_client.js?v=bb34a7b9:18682:30)"
+
+    Going to have to see whythis keeps coming up, maybe I have to do that Vite_ thing? Just want to make sure the API isn't visible client side. 
+
+8/11/24 - 1:53am
+Okay so after doing the VITE_ it made it possible for the variable to work? Also changed the variablename. It now shows in console, just need it to show in HTML. 
+
+8/11/24 - 2:39am
+It looks like to change the reponse grabbed from the JSON data you'll have to use DOM with dot notation to specify what info will be taken and pushed into HTML. (https://www.youtube.com/watch?v=zUcc4vW-jsI)
+
+Oh looks like the way i had my .env leaked my api. I'll have to figure that out as well as remove my 3 most recent commits from the repository. 
+
+8/11/24
+Waiting to put my API key, according to this video (https://www.youtube.com/watch?v=17UVejOw3zA) I shoul dhave put require('dotenv').config(); so i put it in my main.jsx 
+
+Okay so my issue was using Vite_, but that was unnecessary as it made it open for the user to see. So just get rid of that and have the key in a variable in your env and use that variable in your JS. 

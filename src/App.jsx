@@ -8,13 +8,6 @@ function App() {
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.log("There has been an error: " + error));
-  const [count, setCount] = useState(0)
-
-  //WORKING API structure
-fetch('')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.log("There has been an error: " + error));
 
   return (
     <>
